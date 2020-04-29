@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Contact extends Component {
+
+class App extends Component {
+
 
     state = {
         name: '',
@@ -22,7 +24,7 @@ class Contact extends Component {
           email: this.state.email,
           message: this.state.message
       }
-      
+
       axios.post('API_URI', data)
       .then( res => {
           this.setState({ sent: true }, this.resetForm())
@@ -31,15 +33,16 @@ class Contact extends Component {
         console.log('Message not sent')
       })
     }
-    
-resetForm = () => {
-  this.setState({
-      name: '',
-      message: '',
-      email: '',
-      buttonText: 'Message Sent'
-  })
-}
+
+    resetForm = () => {
+      this.setState({
+          name: '',
+          message: '',
+          email: '',
+          buttonText: 'Message Sent'
+      })
+    } 
+
     render() {
         return(
           <form className="contact-form" onSubmit={ (e) => this.formSubmit(e)}>
